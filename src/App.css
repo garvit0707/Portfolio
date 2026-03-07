@@ -1,0 +1,259 @@
+
+/* css variable and reset */
+
+:root {
+  --bg-dark: #060810;
+  --bg-mid: #0c1020;
+  --bg-card: rgba(255, 255, 255, 0.035);
+  --border: rgba(255, 255, 255, 0.07);
+  --accent: #00e5ff;
+  --accent2: #7c4dff;
+  --accent3: #ff6b35;
+  --text-primary: #f0f2ff;
+  --text-muted: #7a8099;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius: 16px;
+  --glow: 0 0 40px rgba(0, 229, 255, 0.15);
+}
+
+   /* LIGHT THEME */
+
+[data-theme="light"] {
+  --bg-dark: #fdf8f2;
+  --bg-mid: #ffffff;
+  --bg-card: rgba(255, 252, 248, 0.92);
+  --border: rgba(92, 45, 245, 0.12);
+  --accent: #5c2df5;
+  --accent2: #f0522a;
+  --accent3: #f5a623;
+  --text-primary: #1a1523;
+  --text-muted: #6b6480;
+  --glow: 0 0 40px rgba(92, 45, 245, 0.18);
+}
+
+[data-theme="light"] body {
+  background: var(--bg-dark);
+}
+
+[data-theme="light"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(92, 45, 245, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 100%, rgba(240, 82, 42, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(245, 166, 35, 0.04) 0%, transparent 70%);
+}
+
+[data-theme="light"] .navbar {
+  background: rgba(253, 248, 242, 0.88) !important;
+  border-bottom: 1px solid rgba(92, 45, 245, 0.1) !important;
+}
+
+[data-theme="light"] .navbar-toggler-icon {
+  filter: none !important;
+}
+
+[data-theme="light"] .navbar-toggler {
+  border-color: rgba(92, 45, 245, 0.2) !important;
+}
+
+[data-theme="light"] .nav-link:hover,
+[data-theme="light"] .nav-link.active {
+  background: rgba(92, 45, 245, 0.08) !important;
+}
+
+[data-theme="light"] .btn-nav-cta {
+  background: var(--accent) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(92, 45, 245, 0.3);
+}
+
+[data-theme="light"] .btn-nav-cta:hover {
+  background: #4620d4 !important;
+  box-shadow: 0 6px 24px rgba(92, 45, 245, 0.45);
+}
+
+[data-theme="light"] .hero-name .line2 {
+  -webkit-text-stroke: 1.5px var(--accent);
+}
+
+[data-theme="light"] .hero-avatar-ring::after {
+  background: var(--bg-dark);
+}
+
+[data-theme="light"] .blob-1 {
+  background: #7b52f5;
+  opacity: 0.1;
+}
+
+[data-theme="light"] .blob-2 {
+  background: #f0522a;
+  opacity: 0.08;
+}
+
+[data-theme="light"] .blob-3 {
+  background: #f5a623;
+  opacity: 0.07;
+}
+
+[data-theme="light"] #particle-canvas {
+  opacity: 0.18;
+}
+
+[data-theme="light"] .stats-row {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(92, 45, 245, 0.15);
+  box-shadow: 0 4px 30px rgba(92, 45, 245, 0.06);
+}
+
+[data-theme="light"] .section-label {
+  color: var(--accent);
+}
+
+[data-theme="light"] .about-highlight {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(92, 45, 245, 0.12);
+  box-shadow: 0 2px 16px rgba(92, 45, 245, 0.06);
+}
+
+[data-theme="light"] .about-highlight:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 24px rgba(92, 45, 245, 0.14);
+}
+
+[data-theme="light"] #skills {
+  background: rgba(92, 45, 245, 0.025);
+}
+
+[data-theme="light"] .skill-card {
+  background: #ffffff;
+  border-color: rgba(92, 45, 245, 0.1);
+  box-shadow: 0 2px 12px rgba(92, 45, 245, 0.05);
+}
+
+[data-theme="light"] .skill-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 32px rgba(92, 45, 245, 0.14);
+}
+
+[data-theme="light"] .skill-bar-track {
+  background: rgba(92, 45, 245, 0.08);
+}
+
+[data-theme="light"] .skill-bar-fill {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+[data-theme="light"] .timeline::before {
+  background: linear-gradient(180deg, var(--accent), var(--accent2), transparent);
+}
+
+[data-theme="light"] .timeline-item::before {
+  border-color: var(--bg-dark);
+  box-shadow: 0 0 14px rgba(92, 45, 245, 0.4);
+}
+
+[data-theme="light"] .timeline-card {
+  background: #ffffff;
+  border-color: rgba(92, 45, 245, 0.1);
+  box-shadow: 0 2px 16px rgba(92, 45, 245, 0.05);
+}
+
+[data-theme="light"] .timeline-card:hover {
+  border-color: rgba(92, 45, 245, 0.35);
+  box-shadow: 0 8px 36px rgba(92, 45, 245, 0.12);
+}
+
+[data-theme="light"] .exp-badge {
+  background: rgba(92, 45, 245, 0.08);
+  color: var(--accent);
+  border-color: rgba(92, 45, 245, 0.2);
+}
+
+[data-theme="light"] .exp-badge.active {
+  background: rgba(0, 210, 110, 0.1);
+  color: #00a86b;
+  border-color: rgba(0, 168, 107, 0.3);
+}
+
+[data-theme="light"] #projects {
+  background: rgba(240, 82, 42, 0.02);
+}
+
+[data-theme="light"] .project-card {
+  background: #ffffff;
+  border-color: rgba(92, 45, 245, 0.1);
+  box-shadow: 0 2px 16px rgba(92, 45, 245, 0.05);
+}
+
+[data-theme="light"] .project-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 16px 48px rgba(92, 45, 245, 0.13);
+}
+
+[data-theme="light"] .project-link {
+  border-color: rgba(92, 45, 245, 0.15);
+}
+
+[data-theme="light"] .project-link:hover {
+  border-color: var(--accent);
+  background: rgba(92, 45, 245, 0.07);
+}
+
+[data-theme="light"] .tech-tag {
+  background: rgba(92, 45, 245, 0.05);
+  border-color: rgba(92, 45, 245, 0.15);
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .tech-tag:hover {
+  background: rgba(92, 45, 245, 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+[data-theme="light"] #achievements {
+  background: rgba(92, 45, 245, 0.02) !important;
+}
+
+[data-theme="light"] .achievement-card {
+  background: #ffffff;
+  border-color: rgba(92, 45, 245, 0.1);
+  box-shadow: 0 2px 16px rgba(92, 45, 245, 0.05);
+}
+
+[data-theme="light"] .achievement-card::before {
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+[data-theme="light"] .achievement-card:hover {
+  box-shadow: 0 10px 40px rgba(92, 45, 245, 0.13);
+  border-color: rgba(92, 45, 245, 0.3);
+}
+
+[data-theme="light"] #contact {
+  background: rgba(240, 82, 42, 0.02) !important;
+}
+
+[data-theme="light"] .contact-card {
+  background: #ffffff;
+  border-color: rgba(92, 45, 245, 0.1);
+  box-shadow: 0 4px 30px rgba(92, 45, 245, 0.07);
+}
+
+[data-theme="light"] .contact-info-item {
+  background: #ffffff;
+  border-color: rgba(92, 45, 245, 0.1);
+}
+
+[data-theme="light"] .contact-info-item:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 4px 20px rgba(92, 45, 245, 0.1);
+}
+
