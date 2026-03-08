@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
 import ThemeToggle from './ThemeToggle';
 
+const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
@@ -32,19 +39,19 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navMenu">
             <ul className="navbar-nav ms-auto align-items-lg-center gap-1 py-3 py-lg-0">
               <li className="nav-item">
-                <a className="nav-link" href="about">About</a>
+                <a className="nav-link" href="about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>About</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="skills">Skills</a>
+                <a className="nav-link" href="skills" onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }}>Skills</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="experience">Experience</a>
+                <a className="nav-link" href="experience" onClick={(e) => { e.preventDefault(); scrollToSection('experience'); }}>Experience</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="projects">Projects</a>
+                <a className="nav-link" href="projects" onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }}>Projects</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="contact">Contact</a>
+                <a className="nav-link" href="contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>Contact</a>
               </li>
               <li className="nav-item ms-lg-2">
                 <a className="nav-link btn-nav-cta" href="/resume.pdf" download>Resume</a>
