@@ -15,6 +15,7 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  
  const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -27,17 +28,17 @@ const Contact = () => {
   setIsSubmitting(true);
 
   try {
-    await emailjs.send(
-      "service_uxwgxgc",
-      "template_ycjqxio",
-      {
-        name: formData.name,
-        email: formData.email,
-        subject: formData.subject,
-        message: formData.message
-      },
-      "zwM9IXSZqOmbNrFVq"
-    );
+  await emailjs.send(
+  import.meta.env.VITE_SERVICE_ID,
+  import.meta.env.VITE_TEMPLATE_ID,
+  {
+    name: formData.name,
+    email: formData.email,
+    subject: formData.subject,
+    message: formData.message
+  },
+  import.meta.env.VITE_PUBLIC_KEY
+);
 
     setStatus({ type: 'success', message: "✅ Message sent! I'll get back to you soon.", show: true });
 
