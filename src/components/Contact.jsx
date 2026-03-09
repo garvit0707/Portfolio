@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,26 +15,47 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!formData.name || !formData.email || !formData.message) {
-      setStatus({ type: 'error', message: '❌ Please fill in all required fields.', show: true });
-      setTimeout(() => setStatus(prev => ({ ...prev, show: false })), 7000);
-      return;
-    }
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    setIsSubmitting(true);
-    
-    // Simulate form submission (replace with actual EmailJS integration)
-    setTimeout(() => {
-      setStatus({ type: 'success', message: "✅ Message sent! I'll get back to you soon.", show: true });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setIsSubmitting(false);
-      setTimeout(() => setStatus(prev => ({ ...prev, show: false })), 7000);
-    }, 1500);
-  };
+  if (!formData.name || !formData.email || !formData.message) {
+    setStatus({ type: 'error', message: '❌ Please fill in all required fields.', show: true });
+    setTimeout(() => setStatus(prev => ({ ...prev, show: false })), 7000);
+    return;
+  }
 
+  setIsSubmitting(true);
+
+  try {
+    await emailjs.send(
+      "service_uxwgxgc",
+      "template_ycjqxio",
+      {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message
+      },
+      "zwM9IXSZqOmbNrFVq"
+    );
+
+    setStatus({ type: 'success', message: "✅ Message sent! I'll get back to you soon.", show: true });
+
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
+
+  } catch (error) {
+    setStatus({ type: 'error', message: '❌ Failed to send message.', show: true });
+    console.log(error);
+  }
+
+  setIsSubmitting(false);
+  setTimeout(() => setStatus(prev => ({ ...prev, show: false })), 7000);
+};
   return (
     <section id="contact" className="section-pad">
       <div className="container">
