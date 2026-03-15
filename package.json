@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "node server.js",
-    "start": "concurrently \"npm run server\" \"npm run dev\""
+    "start": "node server.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
