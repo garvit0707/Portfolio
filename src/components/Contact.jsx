@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,30 +27,34 @@ const Contact = () => {
   setIsSubmitting(true);
 
   try {
-  await emailjs.send(
-  import.meta.env.VITE_SERVICE_ID,
-  import.meta.env.VITE_TEMPLATE_ID,
-  {
-    name: formData.name,
-    email: formData.email,
-    subject: formData.subject,
-    message: formData.message
-  },
-  import.meta.env.VITE_PUBLIC_KEY
-);
-
-    setStatus({ type: 'success', message: "✅ Message sent! I'll get back to you soon.", show: true });
-
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
+    const response = await fetch('http://localhost:3001/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message
+      }),
     });
 
+    if (response.ok) {
+      setStatus({ type: 'success', message: "✅ Message sent! I'll get back to you soon.", show: true });
+
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } else {
+      throw new Error('Failed to send');
+    }
   } catch (error) {
     setStatus({ type: 'error', message: '❌ Failed to send message.', show: true });
-    console.log(error);
+    console.log("error caught is here",error);
   }
 
   setIsSubmitting(false);
